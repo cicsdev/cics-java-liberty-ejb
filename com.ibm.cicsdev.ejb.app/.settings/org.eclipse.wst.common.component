@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="com.ibm.cicsdev.ejb.app">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="com.ibm.cicsdev.ejb.jar" deploy-path="/" handle="module:/resource/com.ibm.cicsdev.ejb/com.ibm.cicsdev.ejb">
+            <dependent-object>Module_1497592399821</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.ibm.cicsdev.ejb.stock.web.war" deploy-path="/" handle="module:/resource/com.ibm.cicsdev.ejb.stock.web/com.ibm.cicsdev.ejb.stock.web">
+            <dependent-object>Module_1498743440589</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.ibm.cicsdev.ejb.shop.web.war" deploy-path="/" handle="module:/resource/com.ibm.cicsdev.ejb.shop.web/com.ibm.cicsdev.ejb.shop.web">
+            <dependent-object>Module_1498743451278</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

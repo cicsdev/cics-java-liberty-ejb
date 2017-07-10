@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest xmlns="http://www.ibm.com/xmlns/prod/cics/bundle" id="com.ibm.cicsdev.ejb" bundleMajorVer="1" bundleMinorVer="0" bundleMicroVer="0" bundleVersion="1" bundleRelease="0" build="IntB-201511072132">
+    <meta_directives>
+        <timestamp>2017-06-20T10:09:40.474+01:00</timestamp>
+    </meta_directives>
+    <define name="com.ibm.cicsdev.ejb.app" type="http://www.ibm.com/xmlns/prod/cics/bundle/EARBUNDLE" path="com.ibm.cicsdev.ejb.app.earbundle"/>
+</manifest>
