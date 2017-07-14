@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><server description="cics-java-liberty-ejb">
+    <featureManager>
+        <feature>cicsts:core-1.0</feature>
+        <feature>cicsts:security-1.0</feature>
+        <feature>ejbLite-3.2</feature>
+        <feature>jaxrs-2.0</feature>
+        <feature>jsf-2.2</feature>
+        <feature>ssl-1.0</feature>
+    </featureManager>
+
+    <!-- CICS Bundle Installed Applications -->
+    <include location="${server.output.dir}/installedApps.xml"/>
+
+    <!-- Use SAF for authentication -->
+    <safRegistry id="saf" />
+
+    <application location="${server.config.dir}/apps/com.ibm.cicsdev.ejb.ear" type="ear">
+        <application-bnd>
+	    <!-- For simplicity of this sample we use the Liberty special subject for all authenticated users. In a real application it would be better to define a SAF EJBROLE -->
+            <security-role name="Administrator">
+                <special-subject type="ALL_AUTHENTICATED_USERS"/>
+            </security-role>
+        </application-bnd>
+    </application>
+</server>
