@@ -1,0 +1,15 @@
+FROM cics_53
+
+# Define the correct type of JVMSERVER to be provisioned
+ENV DFH_REGION_JVMSERVER=Liberty
+
+# Set IMAGE_LIBERTY_DIR environment variable to the defaultServer directory.
+# DO NOT CHANGE THIS VALUE
+ENV IMAGE_LIBERTY_DIR workdir/DFHWLP/wlp/usr/servers/defaultServer
+
+# Add files to applications directory
+COPY com.ibm.cicsdev.ejb.ear ${IMAGE_LIBERTY_DIR}/apps/com.ibm.cicsdev.ejb.ear
+
+# Add Liberty server configuration
+COPY server.xml ${IMAGE_LIBERTY_DIR}/server.xml
+
