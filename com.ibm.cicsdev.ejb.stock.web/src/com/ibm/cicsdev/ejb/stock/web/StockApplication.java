@@ -20,19 +20,33 @@ import javax.ws.rs.core.MediaType;
 import com.ibm.cicsdev.ejb.CatalogueBean;
 import com.ibm.cicsdev.ejb.Item;
 
-@Stateless
-@TransactionAttribute(TransactionAttributeType.NEVER)
+/**
+ * JAX-RS Application to manage stock.
+ * <p>
+ * <strong>Note:</strong> JAX-RS allows applications to be defined as EJBs, to
+ * make injection easier. Here we define it as stateless and to never have a
+ * transaction (as further methods may require a new transaction).
+ * 
+ * @author Alexander Brown
+ */
 @ApplicationPath("/api")
 @Path("/items")
+@Stateless
+@TransactionAttribute(TransactionAttributeType.NEVER)
 public class StockApplication extends Application
 {
-    @EJB private CatalogueBean catalogue;
+    /** Inject the catalogue session bean */
+    @EJB
+    private CatalogueBean catalogue;
     
-    @GET
-    public String test() {
-        return "Test";
-    }
-    
+    /**
+     * Create an item in the catalogue.
+     * 
+     * @param item
+     *            The item to create.
+     * @return The created item.
+     * @throws IOException
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,14 +55,32 @@ public class StockApplication extends Application
         return catalogue.addItem(item.getName(), item.getStock());
     }
     
-    
+    /**
+     * Get an item in the catalogue
+     * 
+     * @param id
+     *            The ID of the item.
+     * @return The item.
+     * @throws IOException
+     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Item getItem(@PathParam("id") int id) throws IOException {
+    public Item getItem(@PathParam("id") int id) throws IOException
+    {
         return catalogue.getItem(id);
     }
     
+    /**
+     * Update an item's stock
+     * 
+     * @param id
+     *            The ID of the item
+     * @param update
+     *            The request to update the item.
+     * @return The updated item
+     * @throws IOException
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

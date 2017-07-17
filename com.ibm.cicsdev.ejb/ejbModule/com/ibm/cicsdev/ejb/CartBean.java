@@ -39,6 +39,7 @@ public class CartBean
             return false;
         }
         
+        // Add the item to the cart
         return this.items.add(item);
     }
     
@@ -54,6 +55,7 @@ public class CartBean
         // Remove the reservation first
         item.unreserve();
         
+        // Remove the item
         return this.items.remove(item);
     }
     
