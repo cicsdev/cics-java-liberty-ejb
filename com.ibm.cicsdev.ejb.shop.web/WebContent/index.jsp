@@ -18,13 +18,13 @@
 	<f:view>
 		<div class="masthead">
 			<header>
-			
+
 				<h3>CICS EJB Sample</h3>
 			</header>
 			<nav>
 				<ul class="nav nav-pills">
 					<li class="active"><a href="#">Shop</a></li>
- 					<li><a href="cart.html">Cart (#{ cart.items.size()})</a>
+					<li><a href="cart.html">Cart (#{ cart.items.size()})</a>
 					<li>
 				</ul>
 			</nav>
@@ -65,11 +65,13 @@
 								<td>#{ item.id }</td>
 								<td>#{ item.name }</td>
 								<c:if test="${ item.stock > 0 }">
-									<td><h:commandButton styleClass="btn btn-default col-md-12"
-											value="Add to Cart" action="#{ cart.add(item) }" /></td>
+									<td><h:commandButton
+											styleClass="btn btn-default col-md-12" value="Add to Cart"
+											action="#{ cart.add(item) }" /></td>
 								</c:if>
 								<c:if test="${item.stock <= 0 }">
-									<td><span class="btn btn-default disabled col-md-12">Out of stock</span></td>
+									<td><span class="btn btn-default disabled col-md-12">Out
+											of stock</span></td>
 								</c:if>
 							</tr>
 						</c:forEach>

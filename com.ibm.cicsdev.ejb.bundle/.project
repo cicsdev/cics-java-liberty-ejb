@@ -10,15 +10,19 @@
 			<arguments>
 				<dictionary>
 					<key>bundleID</key>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>majorVersion</key>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>microVersion</key>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>minorVersion</key>
+					<value></value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
