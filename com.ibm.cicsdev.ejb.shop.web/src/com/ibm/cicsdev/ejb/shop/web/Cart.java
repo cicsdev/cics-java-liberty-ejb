@@ -37,11 +37,12 @@ public class Cart
     {
         return cart.getItems();
     }
-
+    
     /**
      * Proxy to {@link CartBean#add(Item)}
      *
-     * @param item The item to add.
+     * @param item
+     *            The item to add.
      */
     public void add(Item item)
     {
@@ -51,11 +52,12 @@ public class Cart
                     "Reserved by another", "The item is currently reserved by another. Try again later."));
         }
     }
-
+    
     /**
      * Proxy to {@link CartBean#remove(Item)}
      *
-     * @param item The item to remove.
+     * @param item
+     *            The item to remove.
      */
     public void remove(Item item)
     {

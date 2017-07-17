@@ -28,7 +28,7 @@
 				</ul>
 			</nav>
 		</div>
-		
+
 		<section class="jumbotron">
 			<img class="img-responsive"
 				src="http://cicsdev.github.io/imgs/cicsdevGithub.png" />
@@ -40,7 +40,7 @@
 				</p>
 			</div>
 		</section>
-		
+
 		<section>
 			<h2>Cart</h2>
 			<h:form>
