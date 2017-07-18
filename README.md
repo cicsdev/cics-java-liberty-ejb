@@ -1,5 +1,5 @@
 # cics-java-liberty-ejb
-Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
+A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
 
 ## Supporting Files
 * com.ibm.cicsdev.ejb - EJB project containing the session beans
@@ -23,15 +23,15 @@ Java EE EJB sample application to simulate a simple web shop to follow the artic
   * StockUpdateRequest.java - Java class representing a request to update existing stock
 
 ## Pre-requirements
-* CICS TS for z/OS V5.3 or later
+* CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
 * Java SE 1.7 or later on the z/OS System
 
 ### Optional Requirements
-* IBM CICS Explorer - Local development and bundle deployment
-* z/OS Provisioning Toolkit - Provisioning and deployment
+* [IBM CICS Explorer](https://www.ibm.com/us-en/marketplace/cics-explorer) - Local development and bundle deployment
+* [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
-The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
+The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
 
 Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. A sample [server.xml](com.ibm.cicsdev.ejb.config/server.xml) configuration is provided.
 
@@ -77,7 +77,7 @@ Once one or more items have been created, you can then use a browser to navigate
 More stock can be added to an item through the following request (in this case we update item with the ID `1`):
 
 ```http
-PUT /stock/api/items/1 HTTP/1.1
+PUT /stock/api/items/1
 Host: mvs.hurlsey.ibm.com
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
@@ -96,7 +96,7 @@ Content-Type: application/json
 
 You can view the current state of an item by sending a GET request (in this case we get the item with the ID `1`):
 ```http
-GET /stock/api/items/1 HTTP/1.1
+GET /stock/api/items/1
 Host: mvs.hurlsey.ibm.com
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
@@ -111,3 +111,4 @@ Content-Type: application/json
 {"id":1,"name":"CICS TS for z/OS","stock":12}
 
 ```
+
