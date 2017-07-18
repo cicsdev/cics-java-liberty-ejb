@@ -1,30 +1,12 @@
-body {
-	background-color: #F9F9F9;
-	color: #19273C;
-}
-
-.jumbotron {
-	background-color: #EAEAEA;
-	color: #19273C;
-}
-
-}
-.nav>li>a {
-	background-color: #19273C;
-	color: #F9F9F9;
-}
-
-.nav>li>a:hover {
-	background-color: #25467A;
-	color: #F9F9F9;
-}
-
-.nav>li.active>a {
-	background-color: #FE6100;
-	color: #F9F9F9;
-}
-
-.nav>li.active>a:hover {
-	background-color: #FC835C;
-	color: #F9F9F9;
+/* Licensed Materials - Property of IBM                               */
+/*                                                                    */
+/* SAMPLE                                                             */
+/*                                                                    */
+/* (c) Copyright IBM Corp. 2017 All Rights Reserved                   */
+/*                                                                    */
+/* US Government Users Restricted Rights - Use, duplication or        */
+/* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
+/*                                                                    */
+.center{
+    text-align:center;
 }
