@@ -11,8 +11,6 @@ public class Item
     
     private int stock;
     
-    private int reseved = 0;
-    
     public Item(CatalogueBean catalogue, int id, String name, int stock)
     {
         this.catalogue = catalogue;
@@ -52,33 +50,6 @@ public class Item
     public void setStock(int stock)
     {
         this.stock = stock;
-    }
-    
-    public int getReseved()
-    {
-        return reseved;
-    }
-    
-    public boolean reserve()
-    {
-        synchronized (this)
-        {
-            if (reseved >= stock)
-            {
-                return false;
-            }
-            
-            reseved++;
-            return true;
-        }
-    }
-    
-    public void unreserve()
-    {
-        synchronized (this)
-        {
-            reseved--;
-        }
     }
     
     public void purchase() throws IOException
