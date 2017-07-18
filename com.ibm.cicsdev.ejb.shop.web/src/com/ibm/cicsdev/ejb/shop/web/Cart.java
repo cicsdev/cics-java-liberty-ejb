@@ -49,7 +49,7 @@ public class Cart
         if (!cart.add(item))
         {
             FacesContext.getCurrentInstance().addMessage("remove", new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Reserved by another", "The item is currently reserved by another. Try again later."));
+                    "Could not add item", "The item could not be added to the cart."));
         }
     }
     
@@ -64,7 +64,7 @@ public class Cart
         if (!cart.remove(item))
         {
             FacesContext.getCurrentInstance().addMessage("remove",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Could not remove item", "Failed to remove item"));
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Could not remove item", "The item could not be removed to the cart."));
         }
     }
     
