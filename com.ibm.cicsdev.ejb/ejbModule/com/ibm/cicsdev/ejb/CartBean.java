@@ -32,13 +32,6 @@ public class CartBean
      */
     public boolean add(Item item)
     {
-        // Attempt to reserve the item first, otherwise we might end up out of
-        // stock
-        if (!item.reserve())
-        {
-            return false;
-        }
-        
         // Add the item to the cart
         return this.items.add(item);
     }
@@ -52,9 +45,6 @@ public class CartBean
      */
     public boolean remove(Item item)
     {
-        // Remove the reservation first
-        item.unreserve();
-        
         // Remove the item
         return this.items.remove(item);
     }
@@ -101,12 +91,6 @@ public class CartBean
     @Remove
     public void clear()
     {
-        // Remove the reservation of every item
-        for (Item item : this.items)
-        {
-            item.unreserve();
-        }
-        
         // Clear the array
         this.items.clear();
     }
