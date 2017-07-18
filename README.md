@@ -1,5 +1,5 @@
 # cics-java-liberty-ejb
-Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
+A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
 
 ## Supporting Files
 * com.ibm.cicsdev.ejb - EJB project containing the session beans
@@ -23,12 +23,12 @@ Java EE EJB sample application to simulate a simple web shop to follow the artic
   * StockUpdateRequest.java - Java class representing a request to update existing stock
 
 ## Pre-requirements
-* CICS TS for z/OS V5.3 or later
+* CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
 * Java SE 1.7 or later on the z/OS System
 
 ### Optional Requirements
-* IBM CICS Explorer - Local development and bundle deployment
-* z/OS Provisioning Toolkit - Provisioning and deployment
+* [IBM CICS Explorer](https://www.ibm.com/us-en/marketplace/cics-explorer) - Local development and bundle deployment
+* [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
 The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
@@ -111,3 +111,4 @@ Content-Type: application/json
 {"id":1,"name":"CICS TS for z/OS","stock":12}
 
 ```
+
