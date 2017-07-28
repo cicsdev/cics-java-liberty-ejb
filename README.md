@@ -2,13 +2,13 @@
 A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
 
 ## Supporting Files
-* com.ibm.cicsdev.ejb - EJB project containing the session beans
-* com.ibm.cicsdev.ejb.app - EAR project which combines all other projects
-* com.ibm.cicsdev.ejb.bundle - CICS bundle project
-* com.ibm.cicsdev.ejb.config - Sample configuration files
-* com.ibm.cicsdev.ejb.shop.web - WAR project containing the web store JSF front-end
-* com.ibm.cicsdev.ejb.stock.web - WAR project containing the stock management JAX-RS webservice
-* com.ibm.cicsdev.ejb.zospt - Source image for deployment using z/OS Provisioning Toolkit
+* [com.ibm.cicsdev.ejb](src/com.ibm.cicsdev.ejb) - EJB project containing the session beans
+* [com.ibm.cicsdev.ejb.app](src/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
+* [com.ibm.cicsdev.ejb.config](src/com.ibm.cicsdev.ejb.config) - Sample configuration files
+* [com.ibm.cicsdev.ejb.shop.web](src/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
+* [com.ibm.cicsdev.ejb.stock.web](src/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
+* [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
+* [com.ibm.cicsdev.ejb.zospt](etc/zospt/com.ibm.cicsdev.ejb.zospt) - Source image for deployment using z/OS Provisioning Toolkit
 
 ## Java Code
 * com.ibm.cicsdev.ejb
@@ -25,7 +25,6 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 
 ## Pre-requirements
 * CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
-* CICS Liberty JVM server named `WLPSMPL`
 
 ### Optional Requirements
 * [IBM CICS Explorer](https://www.ibm.com/us-en/marketplace/cics-explorer) - Local development and bundle deployment
@@ -34,9 +33,9 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Deploying the Sample
 The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
 
-Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. A sample [server.xml](com.ibm.cicsdev.ejb.config/server.xml) configuration is provided.
+Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server named `WLPSMPL`. A sample [server.xml](com.ibm.cicsdev.ejb.config/server.xml) configuration is provided.
 
-If the sample is correctly deploy, you should see the following messages:
+If the sample is correctly deploy, you should see the following messages in the Liberty logs:
 
 ```
 A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.com/shop/
