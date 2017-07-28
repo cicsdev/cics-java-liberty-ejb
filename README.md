@@ -31,9 +31,11 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
-The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
+The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
 
-Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. A sample [server.xml](com.ibm.cicsdev.ejb.config/server.xml) configuration is provided.
+Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server.
+
+An example [server.xml](etc/config/server.xml) configuration is provided which can be used to deploy the application directly from USS.
 
 If the sample is correctly deploy, you should see the following messages:
 
@@ -112,3 +114,10 @@ Content-Type: application/json
 
 ```
 
+### Further Configuration
+Because TSQs are not recoverable by default, to get the benefit of EJB transactions in the project, you would need to define a TS Model similar to this:
+
+
+```
+DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
+```
