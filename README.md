@@ -8,6 +8,7 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * com.ibm.cicsdev.ejb.config - Sample configuration files
 * com.ibm.cicsdev.ejb.shop.web - WAR project containing the web store JSF front-end
 * com.ibm.cicsdev.ejb.stock.web - WAR project containing the stock management JAX-RS webservice
+* com.ibm.cicsdev.ejb.zospt - Source image for deployment using z/OS Provisioning Toolkit
 
 ## Java Code
 * com.ibm.cicsdev.ejb
@@ -24,14 +25,14 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 
 ## Pre-requirements
 * CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
-* Java SE 1.7 or later on the z/OS System
+* CICS Liberty JVM server named `WLPSMPL`
 
 ### Optional Requirements
 * [IBM CICS Explorer](https://www.ibm.com/us-en/marketplace/cics-explorer) - Local development and bundle deployment
 * [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
-The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
+The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](com.ibm.cicsdev.ejb.zospt/README.md).
 
 Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. A sample [server.xml](com.ibm.cicsdev.ejb.config/server.xml) configuration is provided.
 
@@ -53,7 +54,6 @@ Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
 { "name": "CICS TS for z/OS", "stock": 2 }
-
 ```
 
 ```http
@@ -61,7 +61,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":2}
-
 ```
 
 **Note:** We use BASIC authentication here, but any form of HTTP or HTTPS authentication would work.
@@ -83,7 +82,6 @@ Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
 { "ammount": 10 }
-
 ```
 
 ```http
@@ -91,7 +89,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":12}
-
 ```
 
 You can view the current state of an item by sending a GET request (in this case we get the item with the ID `1`):
@@ -100,8 +97,6 @@ GET /stock/api/items/1
 Host: mvs.hurlsey.ibm.com
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
-
-
 ```
 
 ```http
@@ -109,6 +104,4 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":12}
-
 ```
-
