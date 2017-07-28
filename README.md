@@ -31,11 +31,11 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
-The simplest deploymeny strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
+The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
 
-Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server.
+Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. The features `ejbLite-3.2`, `jaxrs-2.0` and `jsf-2.2` need to be added to the Liberty `server.xml` file.
 
-An example [server.xml](etc/config/server.xml) configuration is provided which can be used to deploy the application directly from USS.
+An example [server.xml](etc/config/server.xml) configuration is provided which can be used to deploy the application directly from USS. To take this route, simple FTP a compiled `ear` file to the Liberty configuration directory of the Liberty JVM server, under the `apps` directory.
 
 If the sample is correctly deploy, you should see the following messages:
 
