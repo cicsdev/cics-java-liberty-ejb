@@ -45,6 +45,13 @@ A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.c
 A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.com/stock/
 ```
 
+If not using a method which uses server.xml deployment, you'll need to define a SAF EJBROLE for the Administrator role.
+
+```
+RDEFINE EJBROLE BBGZDFLT.com.ibm.cicsdev.ejb.Administrator UACC(NONE) 
+PERMIT BBGZDFLT.com.ibm.cicsdev.ejb.Administrator CLASS(EJBROLE) ACCESS(READ) ID(WEBUSER) 
+```
+
 ## Running the Sample
 To create new items in the store send a HTTP request to the stock API:
 
