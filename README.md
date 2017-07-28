@@ -27,7 +27,7 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * Java SE 1.7 or later on the z/OS System
 
 ### Optional Requirements
-* [IBM CICS Explorer](https://www.ibm.com/us-en/marketplace/cics-explorer) - Local development and bundle deployment
+* Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
 * [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
@@ -121,3 +121,13 @@ Because TSQs are not recoverable by default, to get the benefit of EJB transacti
 ```
 DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
 ```
+
+## Importing the Projects into Eclipse
+All the projects with code are Eclipse projects. To import these projects:
+
+1. In Eclipse click *File* -> *Import* -> *General/Existing Projects into Workspace*
+2. *Browse* to the `src` directory.
+3. Ensure all 4 projects are checked
+4. *Finish* to import the source projects.
+
+Optionally, you can import the CICS bundle project by following the same steps, but with the `etc` directory.
