@@ -123,7 +123,7 @@ public class CatalogueBean
      * @throws IOException
      */
     @RolesAllowed("Administrator")
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRES)
     public Item addItem(String name, int stock) throws IOException
     {
         // Define the TSQ object
@@ -153,7 +153,7 @@ public class CatalogueBean
      * @return The details of the updated item
      * @throws IOException
      */
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRES)
     @RolesAllowed("Administrator")
     public Item addStock(int id, int ammount) throws IOException
     {
@@ -174,7 +174,7 @@ public class CatalogueBean
      *            The ID of the item.
      * @throws IOException
      */
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRES)
     public void purchase(int id) throws IOException
     {
         // Remove one of the item.
