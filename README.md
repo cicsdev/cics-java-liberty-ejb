@@ -8,7 +8,6 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * [com.ibm.cicsdev.ejb.shop.web](src/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
 * [com.ibm.cicsdev.ejb.stock.web](src/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
 * [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
-* [com.ibm.cicsdev.ejb.zospt](etc/zospt) - Source image for deployment using z/OS Provisioning Toolkit
 
 ## Java Code
 * com.ibm.cicsdev.ejb
@@ -28,14 +27,11 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 
 ### Optional Requirements
 * Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
-* [z/OS Provisioning Toolkit](https://developer.ibm.com/mainframe/products/zospt/) - Provisioning and deployment
 
 ## Deploying the Sample
-The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
+Import the projects into CICS Explorer. 
 
-Otherwise, import the projects into CICS Explorer. 
-
-To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `WLPSMPL` in the CICS region. Finally define and install a BUNDLE resource.
+To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `WLPSMPL` in the CICS region. Finally define and install a BUNDLE resource. The features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` need to be present for the sample to run.
 
 To install the sample as an EAR file, firstly export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis. Finally, install the JVMSERVER resource in the CICS region.
 
