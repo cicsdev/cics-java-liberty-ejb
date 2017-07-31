@@ -23,8 +23,8 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
   * StockCreateRequest.java - Java class representing a request to create a new item in stock
   * StockUpdateRequest.java - Java class representing a request to update existing stock
 
-## Pre-requirements
-* CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
+## Requirements
+* CICS TS for z/OS V5.3 with APAR [PI63877](http://www-01.ibm.com/support/docview.wss?uid=swg1PI63877) applied, or CICS TS for z/OS V5.4, or later.
 
 ### Optional Requirements
 * Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
@@ -33,11 +33,13 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Deploying the Sample
 The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
 
-Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server named `WLPSMPL`.
+Otherwise, import the projects into CICS Explorer. 
 
-An example [server.xml](etc/config/server.xml) configuration is provided which can be used to deploy the application directly from USS. To take this route, simple FTP a compiled `ear` file to the Liberty configuration directory of the Liberty JVM server, under the `apps` directory.
+To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `WLPSMPL` in the CICS region. Finally define and install a BUNDLE resource.
 
-If the sample is correctly deploy, you should see the following messages in the Liberty logs:
+To install the sample as an EAR file, firstly export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis. Finally, install the JVMSERVER resource in the CICS region.
+
+If the sample is correctly deployed, you should see the following messages in the Liberty logs:
 
 ```
 A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.com/shop/
@@ -63,6 +65,7 @@ Authentication: BASIC <base64 encoded username,password>
 
 { "name": "CICS TS for z/OS", "stock": 2 }
 ```
+The response returned will be similar to:
 
 ```http
 HTTP/1.1 200 OK
@@ -100,6 +103,7 @@ Content-Type: application/json
 ```
 
 You can view the current state of an item by sending a GET request (in this case we get the item with the ID `1`):
+
 ```http
 GET /stock/api/items/1
 Host: mvs.hurlsey.ibm.com
@@ -117,7 +121,6 @@ Content-Type: application/json
 ### Further Configuration
 Because TSQs are not recoverable by default, to get the benefit of EJB transactions in the project, you would need to define a TS Model similar to this:
 
-
 ```
 DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
 ```
@@ -125,7 +128,7 @@ DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
 ## Importing the Projects into Eclipse
 All the projects with code are Eclipse projects. To import these projects:
 
-1. In Eclipse click *File* -> *Import* -> *General/Existing Projects into Workspace*
+1. In Eclipse select *File* > *Import* > *General/Existing Projects into Workspace*
 2. *Browse* to the `src` directory.
 3. Ensure all 4 projects are checked
 4. *Finish* to import the source projects.
