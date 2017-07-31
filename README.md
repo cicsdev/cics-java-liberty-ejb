@@ -2,12 +2,13 @@
 A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
 
 ## Supporting Files
-* com.ibm.cicsdev.ejb - EJB project containing the session beans
-* com.ibm.cicsdev.ejb.app - EAR project which combines all other projects
-* com.ibm.cicsdev.ejb.bundle - CICS bundle project
-* com.ibm.cicsdev.ejb.config - Sample configuration files
-* com.ibm.cicsdev.ejb.shop.web - WAR project containing the web store JSF front-end
-* com.ibm.cicsdev.ejb.stock.web - WAR project containing the stock management JAX-RS webservice
+* [com.ibm.cicsdev.ejb](src/com.ibm.cicsdev.ejb) - EJB project containing the session beans
+* [com.ibm.cicsdev.ejb.app](src/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
+* [com.ibm.cicsdev.ejb.config](src/com.ibm.cicsdev.ejb.config) - Sample configuration files
+* [com.ibm.cicsdev.ejb.shop.web](src/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
+* [com.ibm.cicsdev.ejb.stock.web](src/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
+* [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
+* [com.ibm.cicsdev.ejb.zospt](etc/zospt/com.ibm.cicsdev.ejb.zospt) - Source image for deployment using z/OS Provisioning Toolkit
 
 ## Java Code
 * com.ibm.cicsdev.ejb
@@ -24,7 +25,6 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 
 ## Pre-requirements
 * CICS TS for z/OS V5.3 with APAR PI63877 applied, CICS TS for z/OS V5.4 or later.
-* Java SE 1.7 or later on the z/OS System
 
 ### Optional Requirements
 * Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
@@ -33,11 +33,11 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Deploying the Sample
 The simplest deployment strategy is to use `zospt` (z/OS Provisioning Toolkit). Follow these [instructions](etc/zospt/README.md).
 
-Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server. The features `ejbLite-3.2`, `jaxrs-2.0` and `jsf-2.2` need to be added to the Liberty `server.xml` file.
+Otherwise, import the projects into CICS Explorer. And deploy the CICS bundle to z/FS. Then define and install the bundle in the CICS region, along with a Liberty JVM server named `WLPSMPL`.
 
 An example [server.xml](etc/config/server.xml) configuration is provided which can be used to deploy the application directly from USS. To take this route, simple FTP a compiled `ear` file to the Liberty configuration directory of the Liberty JVM server, under the `apps` directory.
 
-If the sample is correctly deploy, you should see the following messages:
+If the sample is correctly deploy, you should see the following messages in the Liberty logs:
 
 ```
 A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.com/shop/
@@ -62,7 +62,6 @@ Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
 { "name": "CICS TS for z/OS", "stock": 2 }
-
 ```
 
 ```http
@@ -70,7 +69,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":2}
-
 ```
 
 **Note:** We use BASIC authentication here, but any form of HTTP or HTTPS authentication would work.
@@ -92,7 +90,6 @@ Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
 { "ammount": 10 }
-
 ```
 
 ```http
@@ -100,7 +97,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":12}
-
 ```
 
 You can view the current state of an item by sending a GET request (in this case we get the item with the ID `1`):
@@ -109,8 +105,6 @@ GET /stock/api/items/1
 Host: mvs.hurlsey.ibm.com
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
-
-
 ```
 
 ```http
@@ -118,7 +112,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"id":1,"name":"CICS TS for z/OS","stock":12}
-
 ```
 
 ### Further Configuration
