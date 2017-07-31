@@ -4,11 +4,11 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Supporting Files
 * [com.ibm.cicsdev.ejb](src/com.ibm.cicsdev.ejb) - EJB project containing the session beans
 * [com.ibm.cicsdev.ejb.app](src/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
-* [com.ibm.cicsdev.ejb.config](src/com.ibm.cicsdev.ejb.config) - Sample configuration files
+* [com.ibm.cicsdev.ejb.config](etc/config) - Sample configuration files
 * [com.ibm.cicsdev.ejb.shop.web](src/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
 * [com.ibm.cicsdev.ejb.stock.web](src/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
 * [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
-* [com.ibm.cicsdev.ejb.zospt](etc/zospt/com.ibm.cicsdev.ejb.zospt) - Source image for deployment using z/OS Provisioning Toolkit
+* [com.ibm.cicsdev.ejb.zospt](etc/zospt) - Source image for deployment using z/OS Provisioning Toolkit
 
 ## Java Code
 * com.ibm.cicsdev.ejb
