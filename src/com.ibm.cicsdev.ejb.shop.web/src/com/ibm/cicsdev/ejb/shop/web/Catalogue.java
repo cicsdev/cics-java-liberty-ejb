@@ -39,6 +39,6 @@ public class Catalogue
      */
     public Collection<Item> getItems() throws IOException
     {
-        return this.catalogue.getCatalouge();
+        return this.catalogue.getCatalogue();
     }
 }

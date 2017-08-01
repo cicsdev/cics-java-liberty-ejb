@@ -43,7 +43,7 @@ public class CatalogueBean
      * 
      * @throws IOException
      */
-    public List<Item> getCatalouge() throws IOException
+    public List<Item> getCatalogue() throws IOException
     {
         // Define the TSQ object
         TSQ catalogueQueue = getDataSource();
@@ -118,7 +118,7 @@ public class CatalogueBean
      * @param name
      *            The name of the item
      * @param stock
-     *            The ammount of stock the item has
+     *            The amount of stock the item has
      * @return The details of the created item.
      * @throws IOException
      */
@@ -148,23 +148,23 @@ public class CatalogueBean
      * 
      * @param id
      *            The ID of the item
-     * @param ammount
-     *            The ammount of stock to add
+     * @param amount
+     *            The amount of stock to add
      * @return The details of the updated item
      * @throws IOException
      */
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @RolesAllowed("Administrator")
-    public Item addStock(int id, int ammount) throws IOException
+    public Item addStock(int id, int amount) throws IOException
     {
-        // Ensure the stock ammount is positive
-        if (ammount <= 0)
+        // Ensure the stock amount is positive
+        if (amount <= 0)
         {
-            throw new IOException("Cannot add a negative ammount of stock.");
+            throw new IOException("Cannot add a negative amount of stock.");
         }
         
         // Update the stock of the item
-        return changeStock(id, ammount);
+        return changeStock(id, amount);
     }
     
     /**
@@ -219,13 +219,13 @@ public class CatalogueBean
      * 
      * @param id
      *            The ID of the item.
-     * @param ammount
+     * @param amount
      *            The amount to change the stock by.
      * @return The updated item.
      * @throws IOException
      */
     @TransactionAttribute(TransactionAttributeType.MANDATORY)
-    private Item changeStock(int id, int ammount) throws IOException
+    private Item changeStock(int id, int amount) throws IOException
     {
         // Get the data source
         TSQ dataSource = getDataSource();
@@ -237,7 +237,7 @@ public class CatalogueBean
             
             // Update the stock
             int currentStock = item.getStock();
-            int newStock = currentStock + ammount;
+            int newStock = currentStock + amount;
             item.setStock(newStock);
             
             // Update the item in the TSQ
