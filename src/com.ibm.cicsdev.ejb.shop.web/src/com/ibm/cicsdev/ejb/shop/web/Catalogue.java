@@ -1,5 +1,3 @@
-package com.ibm.cicsdev.ejb.shop.web;
-
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
@@ -9,6 +7,7 @@ package com.ibm.cicsdev.ejb.shop.web;
 /* US Government Users Restricted Rights - Use, duplication or        */
 /* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
 /*                                                                    */
+package com.ibm.cicsdev.ejb.shop.web;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -32,7 +31,7 @@ public class Catalogue
     private CatalogueBean catalogue;
     
     /**
-     * Proxy to {@link CatalogueBean#getCatalouge()}.
+     * Proxy to {@link CatalogueBean#getCatalogue()}.
      * 
      * @return All items in the catalogue.
      * @throws IOException

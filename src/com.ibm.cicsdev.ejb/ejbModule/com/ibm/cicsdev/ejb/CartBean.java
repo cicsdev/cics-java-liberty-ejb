@@ -1,5 +1,3 @@
-package com.ibm.cicsdev.ejb;
-
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
@@ -9,6 +7,7 @@ package com.ibm.cicsdev.ejb;
 /* US Government Users Restricted Rights - Use, duplication or        */
 /* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
 /*                                                                    */
+package com.ibm.cicsdev.ejb;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +17,6 @@ import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-
-import com.ibm.cics.server.CicsException;
 
 /**
  * Business logic for controlling an online shopping cart.
@@ -71,10 +68,9 @@ public class CartBean
      * Purchase the items currently in the cart.
      * 
      * @return <code>true</code> if the cart was purchased successfully.
-     * @throws CicsException
      * @throws IOException
      */
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public boolean purchase() throws IOException
     {
         // If the cart is empty nothing can be purchased

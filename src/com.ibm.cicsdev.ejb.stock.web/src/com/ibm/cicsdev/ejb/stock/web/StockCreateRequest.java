@@ -1,5 +1,3 @@
-package com.ibm.cicsdev.ejb.stock.web;
-
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
@@ -9,6 +7,7 @@ package com.ibm.cicsdev.ejb.stock.web;
 /* US Government Users Restricted Rights - Use, duplication or        */
 /* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
 /*                                                                    */
+package com.ibm.cicsdev.ejb.stock.web;
 
 /**
  * Class representing a request to create an item in the catalogue.

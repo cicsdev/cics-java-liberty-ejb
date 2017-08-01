@@ -1,5 +1,3 @@
-package com.ibm.cicsdev.ejb;
-
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
@@ -9,6 +7,7 @@ package com.ibm.cicsdev.ejb;
 /* US Government Users Restricted Rights - Use, duplication or        */
 /* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
 /*                                                                    */
+package com.ibm.cicsdev.ejb;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -17,11 +16,11 @@ import java.util.List;
 
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import com.ibm.cics.server.CicsException;
+import com.ibm.cics.server.CicsConditionException;
 import com.ibm.cics.server.InvalidQueueIdException;
 import com.ibm.cics.server.ItemHolder;
 import com.ibm.cics.server.LengthErrorException;
@@ -32,7 +31,7 @@ import com.ibm.cics.server.TSQ;
  * 
  * @author Alexander Brown
  */
-@Singleton
+@Stateless
 @DeclareRoles("Administrator")
 public class CatalogueBean
 {
@@ -68,7 +67,7 @@ public class CatalogueBean
                 // Both of these mean that the catalogue is empty
                 break;
             }
-            catch (CicsException e)
+            catch (CicsConditionException e)
             {
                 // Other exceptions mean something more serious is going on
                 throw new IOException("Failed to read item from CICS temporary storage", e);
@@ -102,7 +101,7 @@ public class CatalogueBean
         {
             dataSource.readItem(id, holder);
         }
-        catch (CicsException e)
+        catch (CicsConditionException e)
         {
             throw new IOException("Failed to read item " + id + " from CICS.", e);
         }
@@ -123,7 +122,7 @@ public class CatalogueBean
      * @throws IOException
      */
     @RolesAllowed("Administrator")
-    @TransactionAttribute(TransactionAttributeType.REQUIRES)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Item addItem(String name, int stock) throws IOException
     {
         // Define the TSQ object
@@ -137,7 +136,7 @@ public class CatalogueBean
             // Return the details of the item
             return new Item(this, id, name, stock);
         }
-        catch (CicsException e)
+        catch (CicsConditionException e)
         {
             throw new IOException("Failed to create item.", e);
         }
@@ -153,7 +152,7 @@ public class CatalogueBean
      * @return The details of the updated item
      * @throws IOException
      */
-    @TransactionAttribute(TransactionAttributeType.REQUIRES)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @RolesAllowed("Administrator")
     public Item addStock(int id, int amount) throws IOException
     {
@@ -174,7 +173,7 @@ public class CatalogueBean
      *            The ID of the item.
      * @throws IOException
      */
-    @TransactionAttribute(TransactionAttributeType.REQUIRES)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void purchase(int id) throws IOException
     {
         // Remove one of the item.
@@ -246,7 +245,7 @@ public class CatalogueBean
             // Return the updated item
             return item;
         }
-        catch (CicsException e)
+        catch (CicsConditionException e)
         {
             throw new IOException("Failed to update item " + id, e);
         }

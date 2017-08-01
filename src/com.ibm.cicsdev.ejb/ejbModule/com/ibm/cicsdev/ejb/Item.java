@@ -1,5 +1,3 @@
-package com.ibm.cicsdev.ejb;
-
 /* Licensed Materials - Property of IBM                               */
 /*                                                                    */
 /* SAMPLE                                                             */
@@ -9,6 +7,7 @@ package com.ibm.cicsdev.ejb;
 /* US Government Users Restricted Rights - Use, duplication or        */
 /* disclosure restricted by GSA ADP Schedule Contract with IBM Corp   */
 /*                                                                    */
+package com.ibm.cicsdev.ejb;
 
 import java.io.IOException;
 
