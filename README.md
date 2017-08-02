@@ -31,7 +31,7 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Deploying the Sample
 Import the projects into CICS Explorer. 
 
-To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `WLPSMPL` in the CICS region. Finally define and install a BUNDLE resource. The features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` need to be installed in this Liberty JVM server for the sample to run. You can do this by configuring the featureManager element in the Liberty configuration file `server.xml`.
+To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `DFHWLP` in the CICS region. Finally define and install a BUNDLE resource. The features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` need to be installed in this Liberty JVM server for the sample to run. You can do this by configuring the featureManager element in the Liberty configuration file `server.xml`.
 
 To install the sample as an EAR file, firstly export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis. Finally, install the JVMSERVER resource in the CICS region.
 
