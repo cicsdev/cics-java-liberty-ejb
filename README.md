@@ -2,11 +2,11 @@
 A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
 
 ## Supporting Files
-* [com.ibm.cicsdev.ejb](src/com.ibm.cicsdev.ejb) - EJB project containing the session beans
-* [com.ibm.cicsdev.ejb.app](src/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
+* [com.ibm.cicsdev.ejb](projects/com.ibm.cicsdev.ejb) - EJB project containing the session beans
+* [com.ibm.cicsdev.ejb.app](projects/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
 * [com.ibm.cicsdev.ejb.config](etc/config) - Sample configuration files
-* [com.ibm.cicsdev.ejb.shop.web](src/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
-* [com.ibm.cicsdev.ejb.stock.web](src/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
+* [com.ibm.cicsdev.ejb.shop.web](projects/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
+* [com.ibm.cicsdev.ejb.stock.web](projects/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
 * [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
 
 ## Java Code
@@ -125,7 +125,7 @@ DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
 All the projects with code are Eclipse projects. To import these projects:
 
 1. In Eclipse select *File* > *Import* > *General/Existing Projects into Workspace*
-2. *Browse* to the `src` directory.
+2. *Browse* to the `projects` directory.
 3. Ensure all 4 projects are checked
 4. *Finish* to import the source projects.
 
