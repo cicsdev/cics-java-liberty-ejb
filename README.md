@@ -130,3 +130,14 @@ All the projects with code are Eclipse projects. To import these projects:
 4. *Finish* to import the source projects.
 
 Optionally, you can import the CICS bundle project by following the same steps, but with the `etc` directory.
+
+## Notes
+[Twitter Bootstrap](http://getbootstrap.com/) is linked to for styling of the JSF web pages. This is pulled from a content delivery network (CDN) online. If external links are blocked, these web pages will continue to work without Bootstrap, but the Bootstrap CSS can also be downloaded and added by changing the `link` element:
+
+```html
+<!-- Replace the CDN Boostrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+<!-- With the downloaded Bootstrap CSS -->
+<link rel="stylesheet" href="path/to/bootstrap.min.css" />
+```
