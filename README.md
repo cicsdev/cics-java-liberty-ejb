@@ -29,11 +29,21 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
 
 ## Deploying the Sample
-Import the projects into CICS Explorer. 
 
-To install the sample as a CICS bundle, firstly export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. Define and install a JVMSERVER resource named `DFHWLP` in the CICS region. Finally define and install a BUNDLE resource. The features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` need to be installed in this Liberty JVM server for the sample to run. You can do this by configuring the featureManager element in the Liberty configuration file `server.xml`.
+To deploy the sample you will need to import the projects into CICS Explorer. 
 
-To install the sample as an EAR file, firstly export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis. Finally, install the JVMSERVER resource in the CICS region.
+To install the sample as a CICS bundle:
+
+1. Export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. 
+2. Define and install a JVMSERVER resource named `DFHWLP` in the CICS region.
+3. Add the features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` the the `featureManager` element in the Liberty JVM server's server.xml configuration file.
+4. Define and install a BUNDLE resource.
+
+To install the sample through Liberty configuration
+1. Export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish.
+2. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS.
+3. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis.
+4. Install a JVMSERVER resource in the CICS region.
 
 If the sample is correctly deployed, you should see the following messages in the Liberty logs:
 
@@ -43,7 +53,7 @@ A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.c
 A CWWKT0016I: Web application available (default_host): http://mvs.hursley.ibm.com/stock/
 ```
 
-If not using a method which uses server.xml deployment, you'll need to define a SAF EJBROLE for the Administrator role.
+If you use CICS bundle deployment, you will also need to define a RACF profile for users to access the stock REST API.
 
 ```
 RDEFINE EJBROLE BBGZDFLT.com.ibm.cicsdev.ejb.Administrator UACC(NONE) 
