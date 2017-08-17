@@ -23,7 +23,8 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
   * StockUpdateRequest.java - Java class representing a request to update existing stock
 
 ## Requirements
-* CICS TS for z/OS V5.3 with APAR [PI63877](http://www-01.ibm.com/support/docview.wss?uid=swg1PI63877) applied, or CICS TS for z/OS V5.4, or later and CICS security enabled (`SEC=YES`)
+* CICS TS for z/OS V5.3 with APAR [PI63877](http://www-01.ibm.com/support/docview.wss?uid=swg1PI63877) applied, or CICS TS for z/OS V5.4, or later
+* Security enabled on the CICS region (`SEC=YES`)
 * Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
 
 ### Optional Requirements
