@@ -7,7 +7,7 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 * [com.ibm.cicsdev.ejb.config](etc/config) - Sample configuration files
 * [com.ibm.cicsdev.ejb.shop.web](projects/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
 * [com.ibm.cicsdev.ejb.stock.web](projects/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
-* [com.ibm.cicsdev.ejb.bundle](etc/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
+* [com.ibm.cicsdev.ejb.bundle](projects/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
 
 ## Java Code
 * com.ibm.cicsdev.ejb
