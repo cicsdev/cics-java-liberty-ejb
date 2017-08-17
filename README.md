@@ -23,10 +23,10 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
   * StockUpdateRequest.java - Java class representing a request to update existing stock
 
 ## Requirements
-* CICS TS for z/OS V5.3 with APAR [PI63877](http://www-01.ibm.com/support/docview.wss?uid=swg1PI63877) applied, or CICS TS for z/OS V5.4, or later.
+* CICS TS for z/OS V5.3 with APAR [PI63877](http://www-01.ibm.com/support/docview.wss?uid=swg1PI63877) applied, or CICS TS for z/OS V5.4, or later and CICS security enabled (`SEC=YES`)
+* Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
 
 ### Optional Requirements
-* Eclipse with WebSphere Developer Tools and CICS Explorer SDK installed - Local development and bundle deployment
 
 ## Deploying the Sample
 
@@ -44,6 +44,8 @@ To install the sample through Liberty configuration
 2. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS.
 3. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis.
 4. Install a JVMSERVER resource in the CICS region.
+
+**Note:** JVMSERVER autoconfigure will configure the JVM server with the necessary elements in server.xml. Ensure autoconfigure is enabled in the JVM profile of the JVMSERVER used to run this sample.
 
 If the sample is correctly deployed, you should see the following messages in the Liberty logs:
 
