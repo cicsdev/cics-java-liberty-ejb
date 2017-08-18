@@ -1,5 +1,5 @@
 # cics-java-liberty-ejb
-A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center
+A Java EE EJB sample application to simulate a simple web shop to follow the article in the CICS developer center: [EJBs in Liberty JVM server &ndash; a Web Shop example](https://developer.ibm.com/cics/2017/07/26/cics-ejb/)
 
 ## Supporting Files
 * [com.ibm.cicsdev.ejb](projects/com.ibm.cicsdev.ejb) - EJB project containing the session beans
