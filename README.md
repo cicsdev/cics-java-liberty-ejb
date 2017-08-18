@@ -63,7 +63,7 @@ RDEFINE EJBROLE BBGZDFLT.com.ibm.cicsdev.ejb.Administrator UACC(NONE)
 PERMIT BBGZDFLT.com.ibm.cicsdev.ejb.Administrator CLASS(EJBROLE) ACCESS(READ) ID(WEBUSER) 
 ```
 
-If you don't have RACF access, you could alter the `Administrator` role in the code to be the `cicsAllAuthenticated` role instead, which is always configured for CICS bundles, in the [CatalogueBean](projects/com.ibm.cicsdev.ejb/ejbModule/com/ibm/cicsdev/ejb/CatalogueBean) class.
+If you don't have RACF access, you could alter the `Administrator` role in the code to be the `cicsAllAuthenticated` role instead, which is always configured for CICS bundles, in the [CatalogueBean](projects/com.ibm.cicsdev.ejb/ejbModule/com/ibm/cicsdev/ejb/CatalogueBean.java) class.
 
 ## Running the Sample
 To create new items in the store send a HTTP request to the stock API:
