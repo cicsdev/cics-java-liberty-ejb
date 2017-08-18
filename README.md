@@ -37,7 +37,7 @@ To install the sample as a CICS bundle:
 
 1. Export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. 
 2. Define and install a JVMSERVER resource named `DFHWLP` in the CICS region.
-3. Add the features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` the the `featureManager` element in the Liberty JVM server's server.xml configuration file.
+3. Add the features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` to the `featureManager` element in the Liberty JVM server's server.xml configuration file.
 4. Define and install a BUNDLE resource.
 
 To install the sample through Liberty configuration
