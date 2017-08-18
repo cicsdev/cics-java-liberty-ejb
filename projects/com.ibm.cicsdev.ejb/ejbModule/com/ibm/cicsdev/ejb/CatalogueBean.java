@@ -91,7 +91,6 @@ public class CatalogueBean
      * @throws IOException
      */
     @RolesAllowed("Administrator")
-    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Item getItem(int id) throws IOException
     {
         // Define the TSQ object
@@ -115,6 +114,8 @@ public class CatalogueBean
     /**
      * Adds an item to the catalogue. Can only be run by users in the
      * Administrator role.
+     * <p>
+     * A transaction is required to add a new item to the catalogue.
      * 
      * @param name
      *            The name of the item
@@ -146,6 +147,8 @@ public class CatalogueBean
     
     /**
      * Adds more stock to an existing item.
+     * <p>
+     * A transaction is required to update the stock of an item
      * 
      * @param id
      *            The ID of the item
@@ -170,6 +173,8 @@ public class CatalogueBean
     
     /**
      * Purchase an item.
+     * <p>
+     * A transaction is required to update the stock of an item
      * 
      * @param id
      *            The ID of the item.
@@ -217,6 +222,9 @@ public class CatalogueBean
     
     /**
      * Change the stock of an item.
+     * <p>
+     * It is mandatory to have a pre-existing transaction before
+     * updating the stock of an item.
      * 
      * @param id
      *            The ID of the item.
