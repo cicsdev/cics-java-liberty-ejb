@@ -51,9 +51,9 @@ To install the sample through Liberty configuration
 If the sample is correctly deployed, you should see the following messages in the Liberty logs:
 
 ```
-A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com/shop/
+A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com:9080/shop/
 ...
-A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com/stock/
+A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com:9080/stock/
 ```
 
 If you use CICS bundle deployment, you will also need to define a RACF profile for users to access the stock REST API.
@@ -70,7 +70,7 @@ To create new items in the store send a HTTP request to the stock API:
 
 ```http
 POST /stock/api/items HTTP/1.1
-Host: mvs.example.ibm.com
+Host: mvs.example.ibm.com:9080
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -99,7 +99,7 @@ More stock can be added to an item through the following request (in this case w
 
 ```http
 PUT /stock/api/items/1
-Host: mvs.example.ibm.com
+Host: mvs.example.ibm.com:9080
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -117,7 +117,7 @@ You can view the current state of an item by sending a GET request (in this case
 
 ```http
 GET /stock/api/items/1
-Host: mvs.example.ibm.com
+Host: mvs.example.ibm.com:9080
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
 ```
@@ -141,7 +141,7 @@ All the projects with code are Eclipse projects. To import these projects:
 
 1. In Eclipse select *File* > *Import* > *General/Existing Projects into Workspace*
 2. *Browse* to the `projects` directory.
-3. Ensure all 4 projects are checked
+3. Ensure all 5 projects are checked
 4. *Finish* to import the source projects.
 
 Optionally, you can import the CICS bundle project by following the same steps, but with the `etc` directory.
