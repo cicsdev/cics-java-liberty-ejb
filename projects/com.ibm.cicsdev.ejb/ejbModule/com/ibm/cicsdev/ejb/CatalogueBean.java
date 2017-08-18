@@ -35,6 +35,8 @@ import com.ibm.cics.server.TSQ;
 @DeclareRoles("Administrator")
 public class CatalogueBean
 {
+    private static final String CCSID = System.getProperty("com.ibm.cics.jvmserver.local.ccsid");
+    
     /**
      * Loads the catalogue of items from CICS.
      * 
@@ -260,6 +262,6 @@ public class CatalogueBean
      */
     private byte[] getData(Item item)
     {
-        return (item.getName() + "," + item.getStock()).getBytes(Charset.forName("IBM1047"));
+        return (item.getName() + "," + item.getStock()).getBytes(Charset.forName(CCSID));
     }
 }
