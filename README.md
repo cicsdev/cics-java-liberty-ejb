@@ -4,7 +4,7 @@ A Java EE EJB sample application to simulate a simple web shop to follow the art
 ## Supporting Files
 * [com.ibm.cicsdev.ejb](projects/com.ibm.cicsdev.ejb) - EJB project containing the session beans
 * [com.ibm.cicsdev.ejb.app](projects/com.ibm.cicsdev.ejb.app) - EAR project which combines all other projects
-* [com.ibm.cicsdev.ejb.shop.web](projects/com.ibm.cicsdev.shop.web) - WAR project containing the web store JSF front-end
+* [com.ibm.cicsdev.ejb.shop.web](projects/com.ibm.cicsdev.ejb.shop.web) - WAR project containing the web store JSF front-end
 * [com.ibm.cicsdev.ejb.stock.web](projects/com.ibm.cicsdev.ejb.stock.web) - WAR project containing the stock management JAX-RS webservice
 * [com.ibm.cicsdev.ejb.bundle](projects/com.ibm.cicsdev.ejb.bundle) - CICS bundle project
 * [config](etc/config) - Sample configuration files
@@ -90,10 +90,10 @@ Content-Type: application/json
 You can use this request using the command line tool cURL:
 
 ```shell
-curl mvs.example.ibm.com/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user MVSUSER1
+curl mvs.example.ibm.com:9080/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user MVSUSER1
 ```
 
-Once one or more items have been created, you can then use a browser to navigate to http://mvs.example.ibm.com/shop/ and use the shop.
+Once one or more items have been created, you can then use a browser to navigate to http://mvs.example.ibm.com:9080/shop/ and use the shop.
 
 More stock can be added to an item through the following request (in this case we update item with the ID `1`):
 
