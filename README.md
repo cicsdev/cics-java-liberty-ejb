@@ -35,13 +35,13 @@ To deploy the sample you will need to import the projects into CICS Explorer.
 
 To install the sample as a CICS bundle:
 
-1. Export the CICS bundle from Eclipse by selecting the project com.ibm.cicsdev.ejb.bundle > Export Bundle Project to z/OS UNIX File System. 
+1. Export the CICS bundle from Eclipse by selecting the project **com.ibm.cicsdev.ejb.bundle** > **Export Bundle Project to z/OS UNIX File System**. 
 2. Define and install a JVMSERVER resource named `DFHWLP` in the CICS region.
 3. Add the features `ejbLite-3.2`, `jsf-2.2` and `jaxrs-2.0` to the `featureManager` element in the Liberty JVM server's server.xml configuration file.
 4. Define and install a BUNDLE resource.
 
 To install the sample through Liberty configuration
-1. Export the EAR project from Eclipse by selecting the project com.ibm.cicsdev.ejb.app > File > Export > EAR file > Next > choose a destination > Finish.
+1. Export the EAR project from Eclipse by selecting the project **com.ibm.cicsdev.ejb.app** > **File** > **Export** > **EAR file** > **Next** > choose a destination > **Finish**.
 2. Copy the EAR file in binary to the `apps` directory in the Liberty configuration directory on zFS.
 3. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis.
 4. Install a JVMSERVER resource in the CICS region.
@@ -141,10 +141,10 @@ DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
 ## Importing the Projects into Eclipse
 All the projects with code are Eclipse projects. To import these projects:
 
-1. In Eclipse select *File* > *Import* > *General/Existing Projects into Workspace*
-2. *Browse* to the `projects` directory.
+1. In Eclipse select **File** > **Import** > **General/Existing Projects into Workspace**
+2. **Browse** to the `projects` directory.
 3. Ensure all 5 projects are checked
-4. *Finish* to import the source projects.
+4. **Finish** to import the source projects.
 
 
 ## Notes
