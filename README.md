@@ -46,7 +46,7 @@ To install the sample through Liberty configuration
 3. Replace the Liberty configuration file `server.xml` or update elements featureManager, safRegistry and application using [server.xml](etc/config/server.xml) as a basis.
 4. Install a JVMSERVER resource in the CICS region.
 
-**Note:** JVMSERVER autoconfigure will configure the JVM server with the necessary elements in server.xml. Ensure autoconfigure is enabled in the JVM profile of the JVMSERVER used to run this sample.
+**Note:** JVM server autoconfigure will configure the JVM server with the necessary elements in server.xml. Ensure autoconfigure is enabled in the JVM profile of the JVMSERVER used to run this sample.
 
 If the sample is correctly deployed, you should see the following messages in the Liberty logs:
 
@@ -56,7 +56,7 @@ A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.c
 A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com:9080/stock/
 ```
 
-If you use CICS bundle deployment, you will also need to define a RACF profile for users to access the stock REST API, where WEBUSER is the authenticated user ID. 
+If you use CICS bundle deployment, you will also need to define a RACF EJBROLE profile for users to access the stock REST API which is protected by the Administrator role.
 
 ```
 RDEFINE EJBROLE BBGZDFLT.com.ibm.cicsdev.ejb.Administrator UACC(NONE) 
@@ -70,7 +70,7 @@ To create new items in the store send an authenticated HTTP request to the stock
 
 ```http
 POST /stock/api/items HTTP/1.1
-Host: <hostname:port>
+Host: <hostname>:<port>
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -91,17 +91,17 @@ You can use this request using the command line tool cURL, replacing <hostname>,
 curl <hostname>:<port>/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user <WEBUSER>
 ```
 
-**Note:** We use HTTP BASIC authentication in this example but other forms of authentiation could be used. 
+**Note:** We use HTTP BASIC authentication in this example but other forms of authentiation could be used.  
 
 
-Once one or more items have been created, you can then use a browser to navigate to http://<hostname>:<port>/shop/ and use the shop via the CartBean. There is no role protecting
-the CartBean so these HTTP requests do not need to be authenticated.
+Once one or more items have been created, you can then use a browser to navigate to http://hostname:port/shop/ and use the shop via the CartBean. There is no role protecting
+the CartBean so these requests do not need to be authenticated.
 
 More stock can be added to an item through the following HTTP request (in this case we update item with the ID `1`):
 
 ```http
 PUT /stock/api/items/1
-Host: <hostname:port>
+Host: <hostname>:<port>
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -119,7 +119,7 @@ You can view the current state of an item by sending a GET request (in this case
 
 ```http
 GET /stock/api/items/1
-Host: <hostname:port>
+Host: <hostname>:<port>
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
 ```
