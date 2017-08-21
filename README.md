@@ -56,21 +56,21 @@ A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.c
 A CWWKT0016I: Web application available (default_host): http://mvs.example.ibm.com:9080/stock/
 ```
 
-If you use CICS bundle deployment, you will also need to define a RACF profile for users to access the stock REST API.
+If you use CICS bundle deployment, you will also need to define a RACF profile for users to access the stock REST API, where WEBUSER is the authenticated user ID. 
 
 ```
 RDEFINE EJBROLE BBGZDFLT.com.ibm.cicsdev.ejb.Administrator UACC(NONE) 
 PERMIT BBGZDFLT.com.ibm.cicsdev.ejb.Administrator CLASS(EJBROLE) ACCESS(READ) ID(WEBUSER) 
 ```
 
-If you don't have RACF access, you could alter the `Administrator` role in the code to be the `cicsAllAuthenticated` role instead, which is always configured for CICS bundles, in the [CatalogueBean](projects/com.ibm.cicsdev.ejb/ejbModule/com/ibm/cicsdev/ejb/CatalogueBean.java) class.
+If you don't have RACF access, you could alter the `Administrator` role in the [CatalogueBean](projects/com.ibm.cicsdev.ejb/ejbModule/com/ibm/cicsdev/ejb/CatalogueBean.java) to be the `cicsAllAuthenticated` role instead, which is always configured for CICS bundles, 
 
 ## Running the Sample
-To create new items in the store send a HTTP request to the stock API:
+To create new items in the store send an authenticated HTTP request to the stock API. The authenticated user must have access to the role named in the CatalogueBean.
 
 ```http
 POST /stock/api/items HTTP/1.1
-Host: mvs.example.ibm.com:9080
+Host: <hostname:port>
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -85,21 +85,23 @@ Content-Type: application/json
 {"id":1,"name":"CICS TS for z/OS","stock":2}
 ```
 
-**Note:** We use BASIC authentication here, but any form of HTTP or HTTPS authentication would work.
-
-You can use this request using the command line tool cURL:
+You can use this request using the command line tool cURL, replacing <hostname>, <port> and <WEBUSER> with your own values.
 
 ```shell
-curl mvs.example.ibm.com:9080/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user MVSUSER1
+curl <hostname>:<port>/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user <WEBUSER>
 ```
 
-Once one or more items have been created, you can then use a browser to navigate to http://mvs.example.ibm.com:9080/shop/ and use the shop.
+**Note:** We use HTTP BASIC authentication in this example but other forms of authentiation could be used. 
 
-More stock can be added to an item through the following request (in this case we update item with the ID `1`):
+
+Once one or more items have been created, you can then use a browser to navigate to http://<hostname>:<port>/shop/ and use the shop via the CartBean. There is no role protecting
+the CartBean so these HTTP requests do not need to be authenticated.
+
+More stock can be added to an item through the following HTTP request (in this case we update item with the ID `1`):
 
 ```http
 PUT /stock/api/items/1
-Host: mvs.example.ibm.com:9080
+Host: <hostname:port>
 Content-Type: application/json
 Authentication: BASIC <base64 encoded username,password>
 
@@ -117,7 +119,7 @@ You can view the current state of an item by sending a GET request (in this case
 
 ```http
 GET /stock/api/items/1
-Host: mvs.example.ibm.com:9080
+Host: <hostname:port>
 Accept: application/json
 Authentication: BASIC <base64 encoded username,password>
 ```
@@ -130,7 +132,7 @@ Content-Type: application/json
 ```
 
 ### Further Configuration
-Because TSQs are not recoverable by default, to get the benefit of EJB transactions in the project, you would need to define a TS Model similar to this:
+Because CICS TSQs are not recoverable by default, to get the benefit of EJB transactions in the project, you would need to define a TS model definition similar to this:
 
 ```
 DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
@@ -144,7 +146,6 @@ All the projects with code are Eclipse projects. To import these projects:
 3. Ensure all 5 projects are checked
 4. *Finish* to import the source projects.
 
-Optionally, you can import the CICS bundle project by following the same steps, but with the `etc` directory.
 
 ## Notes
 [Twitter Bootstrap](http://getbootstrap.com/) is linked to for styling of the JSF web pages. This is pulled from a content delivery network (CDN) online. If external links are blocked, these web pages will continue to work without Bootstrap, but the Bootstrap CSS can also be downloaded and added by changing the `link` element:
