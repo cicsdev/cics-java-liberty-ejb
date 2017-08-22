@@ -85,7 +85,7 @@ Content-Type: application/json
 {"id":1,"name":"CICS TS for z/OS","stock":2}
 ```
 
-You can use this request using the command line tool cURL, replacing <hostname>, <port> and <WEBUSER> with your own values.
+You can issue this request using the command line tool cURL, replacing hostname, port and WEBUSER with your own values.
 
 ```shell
 curl <hostname>:<port>/stock/api/items/ -X POST -d '{ "name": "CICS TS for z/OS", "stock": 2 }' -H 'Content-Type: application/json' --user <WEBUSER>
