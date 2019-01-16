@@ -135,7 +135,7 @@ Content-Type: application/json
 Because CICS TSQs are not recoverable by default, to get the benefit of EJB transactions in the project, you would need to define a TS model definition similar to this:
 
 ```
-DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERABLE(YES)
+DEFINE TSMODEL(JAVAEJB) GROUP(SAMPEJB) PREFIX(CATALOGUE) RECOVERY(YES)
 ```
 
 ## Importing the Projects into Eclipse
